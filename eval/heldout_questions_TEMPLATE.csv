@@ -1,0 +1,4 @@
+id,question,expected_clause,written_by
+EX1,EXAMPLE ONLY - replace with your own question. What is the least rain that still counts as a wet day?,2.2,EXAMPLE - delete this row
+EX2,EXAMPLE ONLY - replace with your own question. Which company sells this policy?,NONE,EXAMPLE - delete this row
+EX3,EXAMPLE ONLY - replace with your own question. What happens when one station has no record for a day?,4.1,EXAMPLE - delete this row

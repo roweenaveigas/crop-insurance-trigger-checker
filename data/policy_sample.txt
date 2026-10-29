@@ -1,0 +1,24 @@
+SAMPLE WEATHER-INDEX CROP INSURANCE POLICY - FOR ACADEMIC DEMONSTRATION ONLY
+Policy ID: WI-SAMPLE-001. This is a fictional document written for a university mini-project. It is not a real insurance product and its thresholds are not taken from any insurer.
+
+Clause 1.1 Policy Period. The policy covers the Kharif season 2026, from 1 July 2026 to 15 October 2026, both days included.
+
+Clause 1.2 Insured Crop and Sum Insured. The insured crop is paddy. The total sum insured is INR 68,000, divided between the three phases described in Section 3.
+
+Clause 1.3 Reference Weather Station. The Primary Station is RWS-A. The Secondary Station is RWS-B. All indices are measured at the Primary Station unless Clause 4.1 applies.
+
+Clause 2.1 Units. Daily rainfall is measured in millimetres (mm). Readings supplied in centimetres or inches must be converted to mm before use, where 1 cm = 10 mm and 1 in = 25.4 mm. A reading with no stated unit, or with any other unit, is not valid evidence.
+
+Clause 2.2 Dry Day. A day is a dry day if the recorded rainfall for that day is less than 2.5 mm.
+
+Clause 3.1 Phase 1 - Crop Establishment (Cumulative Rainfall Deficit). Observation window: 1 July 2026 to 31 July 2026. Index: the cumulative rainfall over the observation window. Strike: 120 mm. Exit: 60 mm. The trigger is met when the index is below the strike. Payout: INR 300 for each mm by which the index falls below the strike, up to a maximum of INR 18,000 for this phase.
+
+Clause 3.2 Phase 2 - Vegetative Growth (Dry Spell). Observation window: 1 August 2026 to 15 September 2026. Index: the longest run of consecutive dry days. Strike: 15 consecutive dry days. The trigger is met when the longest run is at least 15 days. Payout: the Phase 2 sum insured is INR 30,000. 25% of the Phase 2 sum insured is paid for a longest run of 15 to 19 days; 50% is paid for 20 or more days.
+
+Clause 3.3 Phase 3 - Flowering (Excess Rainfall). Observation window: 16 September 2026 to 15 October 2026. Index: the highest rainfall total over any 3 consecutive days. Strike: 250 mm. The trigger is met when the index is greater than the strike. Payout: the Phase 3 sum insured is INR 20,000. 40% of the Phase 3 sum insured is paid when the index is above 250 mm up to 350 mm; 100% is paid when the index is above 350 mm.
+
+Clause 4.1 Missing Observations and Station Disagreement. Where the Primary Station has no valid reading for a day inside an observation window, up to 3 such days per phase may be filled with the Secondary Station reading for the same day. If more than 3 days are missing in a phase, or the Secondary Station also has no valid reading for a missing day, the index cannot be computed and the case must be referred for manual review. The trigger outcome at the Primary Station is also compared with the outcome calculated from the Secondary Station readings. If the two outcomes differ, the case must be referred to the Claims Review Committee and the Primary Station reading is not overridden automatically.
+
+Clause 5.1 Overall Cap. The total payout across all phases may not exceed the total sum insured of INR 68,000.
+
+Clause 5.2 Nature of this Assessment. A trigger assessment is an indicative calculation only. It is not a claim approval, a claim rejection or a guarantee of compensation, and it does not replace the insurer's official assessment.

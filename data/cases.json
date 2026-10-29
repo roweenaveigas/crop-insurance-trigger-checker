@@ -1,0 +1,1449 @@
+{
+  "policy": "data/policy_sample.txt",
+  "cases": [
+    {
+      "id": "C01",
+      "category": "clean",
+      "description": "Normal season: nothing triggers",
+      "primary": "data/cases/C01_primary.csv",
+      "secondary": "data/cases/C01_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_NOT_MET",
+        "total_payout": "0.00",
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "150.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "C02",
+      "category": "clean",
+      "description": "P1 deficit: 90.0 mm -> shortfall 30 mm -> INR 9,000",
+      "primary": "data/cases/C02_primary.csv",
+      "secondary": "data/cases/C02_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "9000.00",
+        "phases": {
+          "P1": {
+            "status": "MET",
+            "index": "90.0",
+            "payout": "9000.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "C03",
+      "category": "clean",
+      "description": "P1 exactly at strike 120.0 mm -> NOT met (strictly below)",
+      "primary": "data/cases/C03_primary.csv",
+      "secondary": "data/cases/C03_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_NOT_MET",
+        "total_payout": "0.00",
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "C04",
+      "category": "clean",
+      "description": "P1 119.9 mm -> met, payout INR 30",
+      "primary": "data/cases/C04_primary.csv",
+      "secondary": "data/cases/C04_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "30.00",
+        "phases": {
+          "P1": {
+            "status": "MET",
+            "index": "119.9",
+            "payout": "30.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "C05",
+      "category": "clean",
+      "description": "P1 50.0 mm (below exit) -> payout capped at INR 18,000",
+      "primary": "data/cases/C05_primary.csv",
+      "secondary": "data/cases/C05_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "18000.00",
+        "phases": {
+          "P1": {
+            "status": "MET",
+            "index": "50.0",
+            "payout": "18000.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "C06",
+      "category": "clean",
+      "description": "P2 dry run of exactly 15 days -> met 25% = INR 7,500",
+      "primary": "data/cases/C06_primary.csv",
+      "secondary": "data/cases/C06_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "7500.00",
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "150.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "MET",
+            "index": "15",
+            "payout": "7500.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "C07",
+      "category": "clean",
+      "description": "P2 dry run of 14 days -> NOT met",
+      "primary": "data/cases/C07_primary.csv",
+      "secondary": "data/cases/C07_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_NOT_MET",
+        "total_payout": "0.00",
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "150.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "14",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "C08",
+      "category": "clean",
+      "description": "P2 dry run of 20 days -> met 50% = INR 15,000",
+      "primary": "data/cases/C08_primary.csv",
+      "secondary": "data/cases/C08_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "15000.00",
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "150.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "MET",
+            "index": "20",
+            "payout": "15000.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "C09",
+      "category": "clean",
+      "description": "P2 two dry runs (16 and 21 days): the longest governs -> 50%",
+      "primary": "data/cases/C09_primary.csv",
+      "secondary": "data/cases/C09_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "15000.00",
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "150.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "MET",
+            "index": "21",
+            "payout": "15000.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "C10",
+      "category": "clean",
+      "description": "P3 3-day total exactly 250.0 mm -> NOT met (strictly above)",
+      "primary": "data/cases/C10_primary.csv",
+      "secondary": "data/cases/C10_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_NOT_MET",
+        "total_payout": "0.00",
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "150.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "250",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "C11",
+      "category": "clean",
+      "description": "P3 3-day total 250.1 mm -> met 40% = INR 8,000",
+      "primary": "data/cases/C11_primary.csv",
+      "secondary": "data/cases/C11_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "8000.00",
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "150.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "MET",
+            "index": "250.1",
+            "payout": "8000.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "C12",
+      "category": "clean",
+      "description": "P3 3-day total 350.0 mm -> still the 40% band",
+      "primary": "data/cases/C12_primary.csv",
+      "secondary": "data/cases/C12_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "8000.00",
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "150.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "MET",
+            "index": "350",
+            "payout": "8000.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "C13",
+      "category": "clean",
+      "description": "P3 3-day total 360.0 mm -> 100% = INR 20,000",
+      "primary": "data/cases/C13_primary.csv",
+      "secondary": "data/cases/C13_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "20000.00",
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "150.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "MET",
+            "index": "360.0",
+            "payout": "20000.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "C14",
+      "category": "clean",
+      "description": "P1 and P2 both met -> payouts add up",
+      "primary": "data/cases/C14_primary.csv",
+      "secondary": "data/cases/C14_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "13500.00",
+        "phases": {
+          "P1": {
+            "status": "MET",
+            "index": "100.0",
+            "payout": "6000.00"
+          },
+          "P2": {
+            "status": "MET",
+            "index": "17",
+            "payout": "7500.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "C15",
+      "category": "clean",
+      "description": "All three phases met",
+      "primary": "data/cases/C15_primary.csv",
+      "secondary": "data/cases/C15_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "41000.00",
+        "phases": {
+          "P1": {
+            "status": "MET",
+            "index": "60.0",
+            "payout": "18000.00"
+          },
+          "P2": {
+            "status": "MET",
+            "index": "22",
+            "payout": "15000.00"
+          },
+          "P3": {
+            "status": "MET",
+            "index": "300",
+            "payout": "8000.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "C16",
+      "category": "clean",
+      "description": "P2: a day of exactly 2.5 mm is not dry and breaks the run (14 dry, 2.5, 11 dry) -> NOT met",
+      "primary": "data/cases/C16_primary.csv",
+      "secondary": "data/cases/C16_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_NOT_MET",
+        "total_payout": "0.00",
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "150.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "14",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "M01",
+      "category": "missing",
+      "description": "2 days absent in P1 (incl. the 30 mm day); Secondary Station has them -> fill, 125.0 mm, NOT met",
+      "primary": "data/cases/M01_primary.csv",
+      "secondary": "data/cases/M01_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_NOT_MET",
+        "total_payout": "0.00",
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "125.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "M02",
+      "category": "missing",
+      "description": "Exactly 3 blank days in P1 (the allowed limit) -> fill, 110.0 mm, met",
+      "primary": "data/cases/M02_primary.csv",
+      "secondary": "data/cases/M02_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "3000.00",
+        "phases": {
+          "P1": {
+            "status": "MET",
+            "index": "110.0",
+            "payout": "3000.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "M03",
+      "category": "missing",
+      "description": "4 days missing in P1 (over the limit of 3) -> P1 undetermined",
+      "primary": "data/cases/M03_primary.csv",
+      "secondary": "data/cases/M03_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "CANNOT_DETERMINE",
+        "total_payout": null,
+        "phases": {
+          "P1": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [
+          "missing_exceeds_limit"
+        ],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "M04",
+      "category": "missing",
+      "description": "2 days missing in P1 and the Secondary Station is also missing one of them -> undetermined",
+      "primary": "data/cases/M04_primary.csv",
+      "secondary": "data/cases/M04_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "CANNOT_DETERMINE",
+        "total_payout": null,
+        "phases": {
+          "P1": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [
+          "secondary_also_missing"
+        ],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "M05",
+      "category": "missing",
+      "description": "1 blank day inside a 20-day dry spell; filled from Secondary -> still 20 days, 50%",
+      "primary": "data/cases/M05_primary.csv",
+      "secondary": "data/cases/M05_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "15000.00",
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "150.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "MET",
+            "index": "20",
+            "payout": "15000.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "M06",
+      "category": "missing",
+      "description": "Primary file stops on 5 Sep (truncated): P2 and P3 cannot be assessed, P1 still can",
+      "primary": "data/cases/M06_primary.csv",
+      "secondary": "data/cases/M06_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "CANNOT_DETERMINE",
+        "total_payout": null,
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "150.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          },
+          "P3": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          }
+        },
+        "reason_codes": [
+          "missing_exceeds_limit"
+        ],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "U01",
+      "category": "units",
+      "description": "Whole primary file in centimetres -> convert (x10) and assess correctly",
+      "primary": "data/cases/U01_primary.csv",
+      "secondary": "data/cases/U01_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "32000.00",
+        "phases": {
+          "P1": {
+            "status": "MET",
+            "index": "90.0",
+            "payout": "9000.00"
+          },
+          "P2": {
+            "status": "MET",
+            "index": "20",
+            "payout": "15000.00"
+          },
+          "P3": {
+            "status": "MET",
+            "index": "300",
+            "payout": "8000.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1",
+          "2.1"
+        ]
+      }
+    },
+    {
+      "id": "U02",
+      "category": "units",
+      "description": "Whole primary file in inches -> convert (x25.4); expected values from the oracle on the written values",
+      "primary": "data/cases/U02_primary.csv",
+      "secondary": "data/cases/U02_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "31979.48",
+        "phases": {
+          "P1": {
+            "status": "MET",
+            "index": "90.0684",
+            "payout": "8979.48"
+          },
+          "P2": {
+            "status": "MET",
+            "index": "20",
+            "payout": "15000.00"
+          },
+          "P3": {
+            "status": "MET",
+            "index": "300.0248",
+            "payout": "8000.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1",
+          "2.1"
+        ]
+      }
+    },
+    {
+      "id": "U03",
+      "category": "units",
+      "description": "Unit column blank for the whole primary file -> no valid evidence, all phases undetermined",
+      "primary": "data/cases/U03_primary.csv",
+      "secondary": "data/cases/U03_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "CANNOT_DETERMINE",
+        "total_payout": null,
+        "phases": {
+          "P1": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          },
+          "P2": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          },
+          "P3": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          }
+        },
+        "reason_codes": [
+          "missing_exceeds_limit"
+        ],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1",
+          "2.1"
+        ]
+      }
+    },
+    {
+      "id": "U04",
+      "category": "units",
+      "description": "Unsupported unit 'mm/hr' for the whole primary file -> undetermined",
+      "primary": "data/cases/U04_primary.csv",
+      "secondary": "data/cases/U04_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "CANNOT_DETERMINE",
+        "total_payout": null,
+        "phases": {
+          "P1": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          },
+          "P2": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          },
+          "P3": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          }
+        },
+        "reason_codes": [
+          "missing_exceeds_limit"
+        ],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1",
+          "2.1"
+        ]
+      }
+    },
+    {
+      "id": "U05",
+      "category": "units",
+      "description": "Three single days reported in cm inside an otherwise-mm file -> converted, same result as clean",
+      "primary": "data/cases/U05_primary.csv",
+      "secondary": "data/cases/U05_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "32000.00",
+        "phases": {
+          "P1": {
+            "status": "MET",
+            "index": "90.0",
+            "payout": "9000.00"
+          },
+          "P2": {
+            "status": "MET",
+            "index": "20",
+            "payout": "15000.00"
+          },
+          "P3": {
+            "status": "MET",
+            "index": "300",
+            "payout": "8000.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1",
+          "2.1"
+        ]
+      }
+    },
+    {
+      "id": "D01",
+      "category": "integrity",
+      "description": "5 days with two conflicting readings in P1 -> invalid days, over the limit -> undetermined",
+      "primary": "data/cases/D01_primary.csv",
+      "secondary": "data/cases/D01_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "CANNOT_DETERMINE",
+        "total_payout": null,
+        "phases": {
+          "P1": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [
+          "missing_exceeds_limit"
+        ],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "D02",
+      "category": "integrity",
+      "description": "Both files carry 2025 dates (wrong season) -> nothing inside the 2026 windows -> undetermined",
+      "primary": "data/cases/D02_primary.csv",
+      "secondary": "data/cases/D02_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "CANNOT_DETERMINE",
+        "total_payout": null,
+        "phases": {
+          "P1": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          },
+          "P2": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          },
+          "P3": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          }
+        },
+        "reason_codes": [
+          "missing_exceeds_limit"
+        ],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "D03",
+      "category": "integrity",
+      "description": "Primary file is labelled station RWS-X, not the policy's RWS-A -> undetermined",
+      "primary": "data/cases/D03_primary.csv",
+      "secondary": "data/cases/D03_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "CANNOT_DETERMINE",
+        "total_payout": null,
+        "phases": {
+          "P1": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          },
+          "P2": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          },
+          "P3": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          }
+        },
+        "reason_codes": [
+          "station_mismatch"
+        ],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "D04",
+      "category": "integrity",
+      "description": "10 identical duplicate rows -> collapsed silently, same result as clean",
+      "primary": "data/cases/D04_primary.csv",
+      "secondary": "data/cases/D04_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "32000.00",
+        "phases": {
+          "P1": {
+            "status": "MET",
+            "index": "90.0",
+            "payout": "9000.00"
+          },
+          "P2": {
+            "status": "MET",
+            "index": "20",
+            "payout": "15000.00"
+          },
+          "P3": {
+            "status": "MET",
+            "index": "300",
+            "payout": "8000.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "X01",
+      "category": "conflict",
+      "description": "P1: Primary 100.0 mm (met) vs Secondary 130.0 mm (not met) -> refer",
+      "primary": "data/cases/X01_primary.csv",
+      "secondary": "data/cases/X01_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "CANNOT_DETERMINE",
+        "total_payout": null,
+        "phases": {
+          "P1": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [
+          "station_disagreement"
+        ],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "X02",
+      "category": "conflict",
+      "description": "P1: Primary 130.0 mm (not met) vs Secondary 100.0 mm (met) -> refer (Primary is never overridden)",
+      "primary": "data/cases/X02_primary.csv",
+      "secondary": "data/cases/X02_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "CANNOT_DETERMINE",
+        "total_payout": null,
+        "phases": {
+          "P1": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [
+          "station_disagreement"
+        ],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "X03",
+      "category": "conflict",
+      "description": "P1: Primary 100.0 vs Secondary 104.0 mm - small difference, same outcome (met) -> corroborated",
+      "primary": "data/cases/X03_primary.csv",
+      "secondary": "data/cases/X03_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "6000.00",
+        "phases": {
+          "P1": {
+            "status": "MET",
+            "index": "100.0",
+            "payout": "6000.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "X04",
+      "category": "conflict",
+      "description": "P3: Primary storm 260 mm (met) vs Secondary 240 mm (not met) -> refer",
+      "primary": "data/cases/X04_primary.csv",
+      "secondary": "data/cases/X04_secondary.csv",
+      "fault": null,
+      "expected": {
+        "decision": "CANNOT_DETERMINE",
+        "total_payout": null,
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "150.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          }
+        },
+        "reason_codes": [
+          "station_disagreement"
+        ],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "F01",
+      "category": "fault",
+      "description": "Calculator has a transient off-by-one bug in P1 on the first attempt -> verifier catches it, retry fixes it",
+      "primary": "data/cases/F01_primary.csv",
+      "secondary": "data/cases/F01_secondary.csv",
+      "fault": {
+        "mode": "transient",
+        "phase": "P1"
+      },
+      "expected": {
+        "decision": "TRIGGER_MET",
+        "total_payout": "9000.00",
+        "phases": {
+          "P1": {
+            "status": "MET",
+            "index": "90.0",
+            "payout": "9000.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "F02",
+      "category": "fault",
+      "description": "Calculator has a persistent bug in P1 -> verifier catches it on both attempts -> P1 escalated, never reported",
+      "primary": "data/cases/F02_primary.csv",
+      "secondary": "data/cases/F02_secondary.csv",
+      "fault": {
+        "mode": "persistent",
+        "phase": "P1"
+      },
+      "expected": {
+        "decision": "CANNOT_DETERMINE",
+        "total_payout": null,
+        "phases": {
+          "P1": {
+            "status": "UNDETERMINED",
+            "index": null,
+            "payout": null
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [
+          "calc_mismatch"
+        ],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    },
+    {
+      "id": "F03",
+      "category": "fault",
+      "description": "Transient bug on a not-triggered case -> caught and fixed by retry",
+      "primary": "data/cases/F03_primary.csv",
+      "secondary": "data/cases/F03_secondary.csv",
+      "fault": {
+        "mode": "transient",
+        "phase": "P1"
+      },
+      "expected": {
+        "decision": "TRIGGER_NOT_MET",
+        "total_payout": "0.00",
+        "phases": {
+          "P1": {
+            "status": "NOT_MET",
+            "index": "150.0",
+            "payout": "0.00"
+          },
+          "P2": {
+            "status": "NOT_MET",
+            "index": "6",
+            "payout": "0.00"
+          },
+          "P3": {
+            "status": "NOT_MET",
+            "index": "120.0",
+            "payout": "0.00"
+          }
+        },
+        "reason_codes": [],
+        "cited_clauses": [
+          "3.1",
+          "3.2",
+          "3.3",
+          "2.2",
+          "4.1"
+        ]
+      }
+    }
+  ]
+}

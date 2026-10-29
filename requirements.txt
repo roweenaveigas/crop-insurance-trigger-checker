@@ -1,0 +1,5 @@
+pandas>=2.0
+pydantic>=2.0
+langgraph>=0.2        # optional: the agent also runs on the built-in runner without it
+streamlit>=1.30       # only for the UI
+pytest>=7             # optional: the tests also run with `python -m unittest`
