@@ -3,7 +3,7 @@
 ## Run in 5 commands
 
 ```bash
-git clone https://github.com/<your-username>/crop-insurance-trigger-checker.git && cd crop-insurance-trigger-checker
+git clone https://github.com/roweenaveigas/crop-insurance-trigger-checker.git && cd crop-insurance-trigger-checker
 python -m venv .venv && .venv/Scripts/activate        # Windows (Linux/Mac: source .venv/bin/activate)
 pip install -r requirements.txt
 python -m unittest discover -s tests -t .             # 85 tests
