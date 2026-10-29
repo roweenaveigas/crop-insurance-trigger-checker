@@ -86,16 +86,28 @@ class CliViews(unittest.TestCase):
         self.assertIn("| remediate |", out)
 
 
+def pick_and_run(at, cid):
+    """Select case `cid` in the sidebar (group picker, then case picker; redesigned in Review 3) and press Run agent."""
+    from crop_trigger.ui_helpers import CATEGORY_NAMES, DEMO_CASES
+    if cid in DEMO_CASES:
+        group = "Demo cases"
+    else:
+        cases = json.loads((ROOT / "data/cases.json").read_text())["cases"]
+        group = CATEGORY_NAMES[next(c["category"] for c in cases if c["id"] == cid)]
+    at.sidebar.selectbox(key="case_group").select(group).run()
+    label = next(o for o in at.sidebar.selectbox(key="case_pick").options if o.startswith(cid + " "))
+    at.sidebar.selectbox(key="case_pick").select(label).run()
+    at.sidebar.button(key="run_btn").click().run()
+    return at
+
+
 class StreamlitTraceTab(unittest.TestCase):
     """Headless only: AppTest runs the script, it does not render a browser page."""
 
     def run_app(self, cid):
         from streamlit.testing.v1 import AppTest
         at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=90).run()
-        label = next(o for o in at.sidebar.selectbox[0].options if o.startswith(cid + " "))
-        at.sidebar.selectbox[0].select(label).run()
-        at.sidebar.button[0].click().run()
-        return at
+        return pick_and_run(at, cid)
 
     def test_all_four_demo_cases_render_the_trace_tab(self):
         for cid, decision, loops in (("C01", "TRIGGER_NOT_MET", 0), ("M01", "TRIGGER_NOT_MET", 0), ("F01", "TRIGGER_MET", 1),

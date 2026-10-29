@@ -121,6 +121,29 @@ docs/           architecture.png  make_diagram.py
 traces/ runs/   written at run time
 ```
 
+## Streamlit UI
+
+```bash
+streamlit run app.py
+```
+
+The sidebar has a case picker (group first, then case; **Demo cases** are pinned at the top), **Run agent**, and **Run all 4 demo cases**. The LLM layer is off by default. A verdict card (decision as text and colour, payout or reason, a "FLAGGED FOR HUMAN REVIEW" line) and three phase cards (P1 to P3: index, threshold, status, payout, cited clause) sit above the tabs.
+
+| Tab | What it shows |
+|---|---|
+| Result | Phase table and the full report with the arithmetic and the policy clauses relied on |
+| How it decided | The feedback loop first (for example P1: attempt 1 = 91.0 mm, verifier says 90.0 mm, attempt 2 = 90.0 mm, or "No feedback loop was needed in this case."), then a step-by-step story with PLANNING / TOOL USE / RAG / FEEDBACK LOOP / GUARDRAIL / DECISION badges, every retrieval attempt (query, grade, rewrite, clause found), and a flow diagram of the 12 nodes with the ones that ran highlighted and the retry edge marked when it fired. The story is built only from the trace events (`crop_trigger/ui_helpers.py`) |
+| Trace | Run metrics, a timeline with a kind filter, LOOP / GUARDRAIL / RAG REWRITE rows highlighted by colour and by a text flag, per-attempt retrieval tables, JSONL download |
+| Compare cases | One row per demo case (plan, steps, tool calls, rewrites, loops, decision); same numbers as `python -m crop_trigger.cli --compare C01 M01 F01 X01` |
+| Human review | The review form and audit trail for flagged cases |
+| Evaluation | Headline table (naive vs no verifier vs no cross-check vs full agent), planning ablation and abstention tables, read from `eval/*.md` (not recomputed) |
+
+The four demo cases: **C01** clean season (no loop, no abstention), **M01** missing days (plan adds the missing-data step; retrieval rewrite; fill from RWS-B), **F01** injected calculator bug (verify-to-compute feedback loop), **X01** stations disagree (abstains, flagged for human review). The last result is kept in the session, so switching tabs does not rerun the agent. The redesign changes only the UI: agent logic, decisions and eval numbers are unchanged. Light-theme screenshots (Result, How it decided, Trace, Compare cases and Human review for the demo cases, 1366x768) are in `docs/r3_evidence/`.
+
+### Theme
+
+The UI uses a light "field notes" look: cream paper (`#FAF6EC`), forest green (`#1F4D2B`) for headings and the sidebar, wheat gold (`#C9A227`) for the primary button and accents, with Fraunces for headings and the verdict and DM Sans for body text (Google Fonts, with Georgia / sans-serif fallbacks if offline). Colour carries meaning on the verdict and phase cards and always comes with the text label: green = `TRIGGER_NOT_MET`, amber = `TRIGGER_MET` (a payout), purple = human review / `CANNOT_DETERMINE`. The CSS lives in `crop_trigger/theme.py` (`apply_theme()`), the colour tokens for Streamlit itself in `.streamlit/config.toml`, and the card and badge classes are emitted by `crop_trigger/ui_helpers.py`. It is presentation only: no behaviour, numbers or logic depend on it.
+
 ## Review demo script (about 5 minutes)
 
 1. `--case C01 --trace`: clean run; point at plan, retrieval, calculator, verify, decision.
